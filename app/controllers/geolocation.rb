@@ -7,15 +7,17 @@ get '/address' do
 end
 
 get '/address/:id' do
-  bar = Bar.find(params[:id].to_i+1)
+  bar = Bar.find(params[:id].to_i)
   bar.id.to_s + ":" + bar.address.gsub(' ','+') + "Chicago+IL"
 end
 
-post '/address/:id' do
-  bar = Bar.find(params[:id])
+post '/address' do
+  address = params[:address].gsub('+',' ').gsub('Chicago IL','')
+  bar = Bar.find_by(address: address)
   params.delete("splat")
   params.delete("captures")
   params.delete("id")
+  params.delete("address")
   bar.update_attributes(params)
 
 end
