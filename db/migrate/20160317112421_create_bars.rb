@@ -4,6 +4,9 @@ class CreateBars < ActiveRecord::Migration
       t.string  :name, null: false
       t.string  :address, null: false
       t.string  :phone
+      t.float   :lat
+      t.float   :lng
+      t.string  :google_place_id
     end
   end
 end

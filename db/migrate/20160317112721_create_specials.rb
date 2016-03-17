@@ -3,7 +3,7 @@ class CreateSpecials < ActiveRecord::Migration
     create_table :specials do |t|
       t.integer :bar_id, null: false
       t.integer :day_id, null: false
-      t.string  :deals
+      t.string  :deal
     end
   end
 end
