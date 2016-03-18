@@ -1,4 +1,4 @@
-get '/' do
+get '/xxx' do
   erb :geotest
 end
 

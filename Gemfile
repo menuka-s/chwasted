@@ -21,6 +21,8 @@ gem 'faker'
 
 gem 'bcrypt-ruby'
 
+#gem 'geo-distance' '1.2'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'

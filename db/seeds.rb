@@ -2,20 +2,21 @@
 # require '/Users/apprentice/iank/chwasted/app/models/day'
 
 
-Day.create({name: "Sunday"})
-Day.create({name: "Monday"})
-Day.create({name: "Tuesday"})
-Day.create({name: "Wednesday"})
-Day.create({name: "Thursday"})
-Day.create({name: "Friday"})
-Day.create({name: "Saturday"})
-Day.create({name: "Pimpday"})
+Day.create({id: 1, name: "Sunday"})
+Day.create({id: 2, name: "Monday"})
+Day.create({id: 3, name: "Tuesday"})
+Day.create({id: 4, name: "Wednesday"})
+Day.create({id: 5, name: "Thursday"})
+Day.create({id: 6, name: "Friday"})
+Day.create({id: 7, name: "Saturday"})
+Day.create({id: 8, name: "Pimpday"})
 
 
 name = ""
 address = ""
 phone = ""
 Dir.entries("/Users/apprentice/iank/chwasted/db/scrape").each do |file|
+  specials_array = []
   bar_id,foo,bar = file.split('.')
   next if file == '.'
   next if file == '..'
@@ -27,7 +28,9 @@ Dir.entries("/Users/apprentice/iank/chwasted/db/scrape").each do |file|
       day = Day.find(i).name
       puts day + " " + line_info
       line_info.split(',').each do |item|
-        Special.create({day_id: i, bar_id: bar_id, deal: item})
+        if !( item =~ /None/)
+          specials_array << {day_id: i, deal: item}
+        end
       end
     else
       if line_info =~ /^NAME/
@@ -43,12 +46,11 @@ Dir.entries("/Users/apprentice/iank/chwasted/db/scrape").each do |file|
     end
     i += 1
   end
-    if name == "" || address == ""
-      puts "Blank value on #{bar_id}"
-      gets
-    end
-   Bar.create({name: name, address: address, phone: phone})
+  bar = Bar.create({name: name, address: address, phone: phone})
+  specials_array.each do |special|
+    special["bar_id"] = bar.id
+    Special.create(special)
+  end
 end
 
-
-
+# Special.where(deal: " None").each { |x| x.destroy }
