@@ -1,7 +1,7 @@
 $(document).ready(function() {
   base_url = 'http://maps.google.com/maps/api/geocode/json?sensor=false&address='
 
-  for (var i=1; i< 2; i++) {
+  for (var i=1; i< 346; i++) {
     var url = "/address/" + parseInt(i);
     var ajaxReq = $.ajax({url: url, method: "get"});
     ajaxReq.done(function(data) {
