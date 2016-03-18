@@ -1,6 +1,6 @@
-<% @bar_specials.each do |bar,specials_array| %>
-  <ul><span style="font-size: 2em"><%= bar.name %></span>
-    <%= distance([41.8896985,-87.6396759],[bar.lat,bar.lng]).round(2) %> m
+<% @bar_specials.each do |bar_dist,specials_array| %>
+  <ul><span style="font-size: 2em"><%= bar_dist[0].name %></span>
+    <%= (bar_dist[1] /1000).round(2) %> km
     <br><br>
     <% specials_array.each do |special| %>
       <li><%= special.deal %></li>
