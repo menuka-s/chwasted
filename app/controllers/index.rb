@@ -1,6 +1,6 @@
 require 'json'
 
-get '/' do
+get '/search' do
   bars_with_specials_today = []
   day_num = Time.new.wday + 1
 
@@ -18,11 +18,11 @@ get '/' do
   end
 
   # erb :nearby_bars
-  erb :index
+  erb :nearby_bars
 end
 
-get '/search' do
-  erb :active
+get '/' do
+  erb :index
 end
 
 # for ajax req - returns an array of [bar_id,lat,lng,place_id] arrays for map generation
@@ -70,7 +70,7 @@ get '/places2' do
     specials_string += "</ul>"
 
     # data << [bar.name, "Chicago, IL", ""]
-    data << [bar.name, (bar.address + "Chicago, IL"), specials_string]
+    data << [bar.name, (bar.address + "Chicago, IL"), specials_string, bar.id]
   end
 
   data.to_json

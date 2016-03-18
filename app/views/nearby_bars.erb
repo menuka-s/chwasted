@@ -1,20 +1,30 @@
+<nav>
+  <ul class="left">
+    <li class="logo fa fa-glass"><a href="/">CHWASTED</a></li>
+  </ul>
+  <ul class="right">
+    <li><a class="fa fa-bars" id="toggle" href="#"></a></li>
+  </ul>
+</nav>
+
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,places&ext=.js&key=AIzaSyAH5r7d9azvFjoz7MZtP-UkoqRUxJXBLe0"></script>
 
 
 <script src="/js/map-data.js"></script>
+<script src="/js/effects.js"></script>
 
+<div id="map_canvas"></div>
 
-<div id="left">
-<% @bar_specials.each do |bar_dist,specials_array| %>
-  <ul><span style="font-size: 2em"><%= bar_dist[0].name %></span>
-    <%= (bar_dist[1] /1000).round(2) %> km
-    <br><br>
+<div class="drawer">
+  <% @bar_specials.each do |bar_dist,specials_array| %>
+    <div class="slot">
+      <h1><%= bar_dist[0].name %></h1>
+      <p><%= (bar_dist[1] /1000).round(2) %> KM</p>
+    </div>
     <% specials_array.each do |special| %>
-      <li><%= special.deal %></li>
+    <div class="more-info">
+      <p><%= special.deal %></p>
+    </div>
+      <% end %>
     <% end %>
-  </ul>
-<% end %>
 </div>
-
-<div id="map_canvas" style="width:750px; height:450px; border: 2px solid #3872ac;"></div>
-

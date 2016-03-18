@@ -29,12 +29,12 @@ $(document).ready(function() {
         $(this).next().slideToggle(1000)
     });
 
-    $('#search').on('submit', function() {
-     event.preventDefault();
-     var search = '<li><input id="nav-search" autocomplete="off" type="text" name="search_term" placeholder="LOCATION" value=""></li>';
-     $(this).fadeOut(2000)
-     $('#map').fadeOut(3000);
-     $('#map-active').show(3000);
-     $('.right').prepend(search).hide().fadeIn(3000);
-    });
+    //  {
+    //  event.preventDefault();
+    //  var search = '<li><input id="nav-search" autocomplete="off" type="text" name="search_term" placeholder="LOCATION" value=""></li>';
+    //  $(this).fadeOut(2000)
+    //  $('#map').fadeOut(3000);
+    //  $('#map-active').show(3000);
+    //  $('.right').prepend(search).hide().fadeIn(3000);
+    // });
 });
