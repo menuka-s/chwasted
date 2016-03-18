@@ -1,3 +1,5 @@
+require 'json'
+
 get '/' do
   bars_with_specials_today = []
   day_num = Time.new.wday + 1
@@ -37,5 +39,5 @@ get '/places' do
     data << [bar.id, bar.lat, bar.lng, bar.google_place_id]
   end
 
-  data
+  data.to_json
 end
