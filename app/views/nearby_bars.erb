@@ -1,12 +1,20 @@
 
+<<<<<<< HEAD
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,places&ext=.js&key=AIzaSyAH5r7d9azvFjoz7MZtP-UkoqRUxJXBLe0"></script>
+=======
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,places&ext=.js&key=AIzaSyAH5r7d9azvFjoz7MZtP-UkoqRUxJXBLe0"></script>
+>>>>>>> 0625f3d638efe4eaecafe03a79b7c5ed68f39ae6
 <script type="text/javascript">
 
 var locations = [];
+var locations_full = [];
 var ajaxReq = $.ajax({url: "/places2", method: "get"});
 ajaxReq.done(function(data) {
   locations = JSON.parse(data);
-  debugger
+  // locations.push(locations_full[0])
+  // locations.push(locations_full[1])
+  // locations.push(locations_full[2])
+
 });
 
 // var locations = [
@@ -14,6 +22,8 @@ ajaxReq.done(function(data) {
 //     ['Location 2 Name', 'Newark, NJ', 'Location 2 URL'],
 //     ['Location 3 Name', 'Philadelphia, PA', 'Location 3 URL']
 // ];
+
+debugger
 
 var geocoder;
 var map;

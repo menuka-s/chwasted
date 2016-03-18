@@ -1,28 +1,34 @@
 # require '/Users/apprentice/iank/chwasted/config/environment'
 # require '/Users/apprentice/iank/chwasted/app/models/day'
 
+puts "KJDHFKJSHFJ"
 
-Day.create({id: 1, name: "Sunday"})
-Day.create({id: 2, name: "Monday"})
-Day.create({id: 3, name: "Tuesday"})
-Day.create({id: 4, name: "Wednesday"})
-Day.create({id: 5, name: "Thursday"})
-Day.create({id: 6, name: "Friday"})
-Day.create({id: 7, name: "Saturday"})
-Day.create({id: 8, name: "Pimpday"})
+Day.find_or_create_by({id: 1, name: "Sunday"})
+Day.find_or_create_by({id: 2, name: "Monday"})
+Day.find_or_create_by({id: 3, name: "Tuesday"})
+Day.find_or_create_by({id: 4, name: "Wednesday"})
+Day.find_or_create_by({id: 5, name: "Thursday"})
+Day.find_or_create_by({id: 6, name: "Friday"})
+Day.find_or_create_by({id: 7, name: "Saturday"})
+Day.find_or_create_by({id: 8, name: "Pimpday"})
 
-
+fuckup_count = 0
+non_fuckup_count = 0
 name = ""
 address = ""
 phone = ""
-Dir.entries("/Users/apprentice/iank/chwasted/db/scrape").each do |file|
+Dir.chdir(APP_ROOT.to_s + "/db/scrape")
+	puts "XXX"
+Dir.entries(".").each do |file|
   specials_array = []
-  bar_id,foo,bar = file.split('.')
+  bar_id = file.split('.')[0]
   next if file == '.'
   next if file == '..'
   puts "Working on #{file}"
   i = 1
-  File.new("/Users/apprentice/iank/chwasted/db/scrape/" + file).each do |line|
+
+  File.new(file).each do |line|
+  	puts "here"
     line_info = line.chomp
     if i < 8
       day = Day.find(i).name
@@ -48,9 +54,18 @@ Dir.entries("/Users/apprentice/iank/chwasted/db/scrape").each do |file|
   end
   bar = Bar.create({name: name, address: address, phone: phone})
   specials_array.each do |special|
-    special["bar_id"] = bar.id
-    Special.create(special)
+    # special["bar_id"] = bar.id
+    new_spec = Special.new(special)
+    new_spec.bar_id = bar.id
+    if new_spec.bar_id != nil
+	    new_spec.save
+	    non_fuckup_count += 1
+	else 
+		fuckup_count += 1
+	end
   end
 end
+
+puts fuckup_count.to_s + " fuckups reported out of " + non_fuckup_count.to_s + " possible fuckups, for a fuckup rate of " + (fuckup_count / non_fuckup_count.to_f).round(5).to_s 
 
 # Special.where(deal: " None").each { |x| x.destroy }
