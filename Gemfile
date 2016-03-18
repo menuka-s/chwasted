@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
+<<<<<<< HEAD
+=======
+ruby '2.2.3'
+>>>>>>> master
 
 # PostgreSQL driver
 gem 'pg'
@@ -19,6 +23,8 @@ gem 'shotgun'
 gem 'faker'
 
 gem 'bcrypt-ruby'
+
+#gem 'geo-distance' '1.2'
 
 group :test do
   gem 'shoulda-matchers'
