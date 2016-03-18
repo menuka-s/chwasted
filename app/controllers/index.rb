@@ -36,6 +36,7 @@ get '/places' do
 
   nearby_bars_with_dist.each do |bar_dist|
     bar = bar_dist[0]
+    # specials_string = bar_dist[0].specials.where(day_id: day_num).join('<br>')
     data << [bar.id, bar.lat, bar.lng, bar.google_place_id]
   end
 
@@ -54,11 +55,17 @@ get '/places2' do
 
   max_distance = 1000 # meters
   nearby_bars_with_dist = find_bars_by_dist(bars_with_specials_today, max_distance)
-
+  day_num = Time.new.wday + 1
   nearby_bars_with_dist.each do |bar_dist|
     bar = bar_dist[0]
+    specials_string = "<ul>"
+    bar_dist[0].specials.where(day_id: day_num).each do |special|
+      specials_string += "<li>" + special.deal + "</li>"
+    end
+    specials_string += "</ul>"
+
     # data << [bar.name, "Chicago, IL", ""]
-    data << [bar.name, (bar.address + "Chicago, IL"), ""]
+    data << [bar.name, (bar.address + "Chicago, IL"), specials_string]
   end
 
   data.to_json
