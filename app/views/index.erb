@@ -13,8 +13,10 @@
 	</form>
 </div>
 <div class="search">
-	<form id="search" method="GET" action="/search">
+	<form id="search" method="POST" action="/search">
 		<input id="search-input" autocomplete="off" type="text" name="search_term" placeholder="LOCATION" value="">
+		<input type="hidden" name="coords" id="coords">
+
 		<input class="button" type="submit" value="search">
 	</form>
 </div>
@@ -36,6 +38,8 @@
 </div>
 
 <script src="/js/effects.js"></script>
+
+
 
 <script>
 	var map, map2;

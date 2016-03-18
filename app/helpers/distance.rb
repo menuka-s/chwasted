@@ -1,6 +1,10 @@
 # ([lat1,lng1],[lat2,lng2])
 
 def distance loc1, loc2
+  puts "\n\n\n\n\n\n"
+  p loc1
+  p loc2
+  puts "\n\n\n\n\n\n"
   rad_per_deg = Math::PI/180  # PI / 180
   rkm = 6371                  # Earth radius in kilometers
   rm = rkm * 1000             # Radius in meters

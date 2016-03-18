@@ -46,3 +46,13 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
+
+
+# ian
+#$my_coords = [41.919718,-87.692625]
+## dbc
+#$my_coords = [41.8896985,-87.6396759]
+# logan square
+#$my_coords = [41.9228638,-87.7181641]
+#wrigley
+# $my_coords = []

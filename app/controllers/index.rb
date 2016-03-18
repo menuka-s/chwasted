@@ -1,6 +1,17 @@
 require 'json'
 
-get '/search' do
+#$my_coords = [41.8896985,-87.6396759]
+
+# $my_coords = []
+
+
+post '/search' do
+ # puts params
+  lat= params[:coords].split(',')[0].to_f
+  lng= params[:coords].split(',')[1].to_f
+# puts "\n\n\n\n\n\n" + $my_coords[0].to_s + " " + $my_coords[1].to_s + "\n\n\n\n\n"
+ session[:coords] = [lat,lng]
+p $my_coords = [lat,lng]
   bars_with_specials_today = []
   day_num = Time.new.wday + 1
 
@@ -68,9 +79,9 @@ get '/places2' do
       specials_string += "<li>" + special.deal + "</li>"
     end
     specials_string += "</ul>"
-
+    my_coords = session[:coords][0].to_s + "," + session[:coords][1].to_s
     # data << [bar.name, "Chicago, IL", ""]
-    data << [bar.name, (bar.address + "Chicago, IL"), specials_string, bar.id]
+    data << [bar.name, (bar.address + "Chicago, IL"), specials_string, bar.id, my_coords]
   end
 
   data.to_json

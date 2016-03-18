@@ -7,23 +7,16 @@ var locations = [];
 var locations_full = [];
 // google.maps.event.addDomListener(window, "load", initialize);
 
-
-
-
-    console.log("DKJFD")
-    var ajaxReq = $.ajax({url: "/places2", method: "get"});
-        ajaxReq.done(function(data) {
-         locations = JSON.parse(data);
-         initialize();
-    });
-
-
-
+var ajaxReq = $.ajax({url: "/places2", method: "get"});
+    ajaxReq.done(function(data) {
+     locations = JSON.parse(data);
+     initialize();
+});
 
 function initialize() {
     map = new google.maps.Map(
     document.getElementById("map_canvas"), {
-        center: new google.maps.LatLng(41.8896985,-87.6396759),
+        center: new google.maps.LatLng(locations[0][4]),
         zoom: 1,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
