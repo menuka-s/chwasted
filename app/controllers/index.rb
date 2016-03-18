@@ -17,7 +17,8 @@ get '/' do
     @bar_specials[bar_dist] = bar_dist[0].specials.where(day_id: day_num)
   end
 
-  erb :nearby_bars
+  # erb :nearby_bars
+  erb :index
 end
 
 # for ajax req - returns an array of [bar_id,lat,lng,place_id] arrays for map generation

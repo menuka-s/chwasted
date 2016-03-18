@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
-<<<<<<< HEAD
-=======
-ruby '2.2.3'
->>>>>>> master
+# ruby '2.2.3'
 
 # PostgreSQL driver
 gem 'pg'
