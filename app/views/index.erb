@@ -1,1 +1,54 @@
-index.erb
+<nav>
+	<ul class="left">
+	  <li class="logo fa fa-glass"><a href="/">CHWASTED</a></li>
+	</ul>
+	<ul class="right">
+	  <li><a class="fa fa-bars" id="toggle" href="#"></a></li>
+	</ul>
+</nav>
+<div class="money">
+	<form method="POST" action="/money">
+		<input id="money-input" type="text" autocomplete="off" name="search_term" placeholder="$0.00" value="">
+		<input class="button" type="submit" value="submit">
+	</form>
+</div>
+<div class="search">
+	<form id="search" method="GET" action="/search">
+		<input id="search-input" autocomplete="off" type="text" name="search_term" placeholder="LOCATION" value="">
+		<input class="button" type="submit" value="search">
+	</form>
+</div>
+
+<div id="map">
+</div>
+<div id="map-active">
+</div>
+
+<div class="drawer">
+		<div class="slot">
+			<div class="slot-image">
+				<img src="">
+			</div>
+		</div>
+		<div class="more-info">
+			<p><%= @bar_specials %></p>
+		</div>
+</div>
+
+<script>
+	var map, map2;
+	function initMap() {
+	  // Create a map object and specify the DOM element for display.
+	    var map = new google.maps.Map(document.getElementById('map'), {
+	      center: {lat: 41.8896848, lng: -87.6399389},
+	      scrollwheel: false,
+	      zoom: 12
+	    });
+
+	    var map2 = new google.maps.Map(document.getElementById('map-active'), {
+	      center: {lat: 41.8896848, lng: -87.6399389},
+	      scrollwheel: true,
+	      zoom: 14
+	    });
+	  }
+</script>
