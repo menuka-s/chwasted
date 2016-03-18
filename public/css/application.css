@@ -1,0 +1,10 @@
+#left {
+  width: 300px;
+  display: inline-block;
+  float: left;
+}
+
+#map_canvas {
+  display: inline-block;
+  float: right;
+}
