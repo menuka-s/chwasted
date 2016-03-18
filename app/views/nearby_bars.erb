@@ -1,3 +1,9 @@
-<% @nearby_bars.each do |bar| %>
-<%= bar.name %><br>
+<% @bar_specials.each do |bar,specials_array| %>
+  <ul><span style="font-size: 2em"><%= bar.name %></span>
+    <%= distance([41.8896985,-87.6396759],[bar.lat,bar.lng]).round(2) %> m
+    <br><br>
+    <% specials_array.each do |special| %>
+      <li><%= special.deal %></li>
+    <% end %>
+  </ul>
 <% end %>

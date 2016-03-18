@@ -1,5 +1,4 @@
 def find_bars_by_dist(bars, max_dist)
-p bars
   nearby_bars = []
   my_coords = [41.8896985,-87.6396759]
   bars.each_index do |i|
@@ -12,6 +11,5 @@ p bars
       end
     end
   end
-  p nearby_bars
   nearby_bars
 end
