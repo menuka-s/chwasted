@@ -24,3 +24,13 @@ post '/address' do
   bar.update_attributes(params)
 
 end
+
+
+get '/specials/:id' do
+  bars_with_specials_today = []
+  day_num = Time.new.wday + 1
+
+  special_list = Day.find(day_num).specials.each.where(bar_id: params[:id])
+
+  special_list.to_json
+end
