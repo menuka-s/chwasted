@@ -21,6 +21,10 @@ get '/' do
   erb :index
 end
 
+get '/search' do
+  erb :active
+end
+
 # for ajax req - returns an array of [bar_id,lat,lng,place_id] arrays for map generation
 get '/places' do
   data = []

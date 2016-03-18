@@ -1,8 +1,13 @@
 $(document).ready(function() {
+    $('nav').hide();
+    $('nav').slideToggle(1000);
+    $('.logo').hide();
+    $('.logo').fadeIn(3000);
     $('.search').hide();
     $('.more-info').hide();
     $('.drawer').hide();
-    $('#map-active').fadeIn(10000);
+    $('#nav-search').hide();
+    $('#nav-search').fadeIn(3000);
 
     $('.money').on('submit', function() {
         event.preventDefault();
@@ -24,17 +29,12 @@ $(document).ready(function() {
         $(this).next().slideToggle(1000)
     });
 
-    // $('#search').on('submit', function() {
-    //  var $form = $(this);
-    //  var route = $form.attr('action');
-    //  var data = $form.serialize();
-    //  var request = $.ajax({
-    //      url: route,
-    //      method: 'POST',
-    //      data: data
-    //  });
-
-    //  request.done(function(response){
-    //  });
-    // });
+    $('#search').on('submit', function() {
+     event.preventDefault();
+     var search = '<li><input id="nav-search" autocomplete="off" type="text" name="search_term" placeholder="LOCATION" value=""></li>';
+     $(this).fadeOut(2000)
+     $('#map').fadeOut(3000);
+     $('#map-active').show(3000);
+     $('.right').prepend(search).hide().fadeIn(3000);
+    });
 });
